@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cliente</title>
+</head>
+<body>
+    <div th:each="cliente : ${lista}">
+        <h1 th:text="${cliente.nome}">Nome</h1>
+        <h2 th:text="${cliente.cpf}"></h2>
+        <h2 th:text="${cliente.email}"></h2>
+        <h2 th:text="${cliente.endereco}"></h2>
+    </div>
+</body>
+</html>
