@@ -8,4 +8,6 @@ public interface CrudService<T, ID>{
     Optional<T> findById(ID id);
     T save(T t);
     void delete(ID id);
+    void preSave(T t);
+    void postSave(T t);
 }

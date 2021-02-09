@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 
+import java.sql.SQLOutput;
 import java.util.Collections;
 import java.util.List;
 
@@ -31,8 +32,20 @@ public class ProdutoServiceImpl extends CrudServiceImpl<Produto, Long> implement
         return result;
     }
 
+
     @Override
     public List<Produto> findByAutor(String autor) {
-        return produtoRepository.findAllByAutor(autor);
+
+        return produtoRepository.findAllByAutorContainsIgnoreCase(autor);
+    }
+
+    @Override
+    public void preSave(Produto produto) {
+        System.out.println("Passei pelo pre save e o id era nulo");
+    }
+
+    @Override
+    public void postSave(Produto produto) {
+        System.out.println(String.format("Passei pelo post save, o id é %d",produto.getId()));
     }
 }

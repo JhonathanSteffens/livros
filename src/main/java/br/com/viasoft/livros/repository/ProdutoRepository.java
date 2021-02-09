@@ -8,5 +8,6 @@ import java.util.List;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
-    List<Produto> findAllByAutor(String autor);
+    List<Produto> findAllByAutorIgnoreCase(String autor);
+    List<Produto> findAllByAutorContainsIgnoreCase(String autor);
 }
