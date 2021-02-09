@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class Produto {
+public class Produto implements Comparable<Produto> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -17,6 +17,10 @@ public class Produto {
     private String autor;
     private String imagem;
 
+    @Override
+    public int compareTo(Produto o) {
+        return nome.compareTo(o.nome);
+    }
 }
 
 

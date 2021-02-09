@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html th:replace="~{base :: base(~{::title}, ~{:: #conteudo})}" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="conteudo">
+        <h1>ID: <span th:text="${produto.id}">Id do Produto</span></h1>
+        <h1>Nome: <span th:text="${produto.nome}">Nome do Produto</span></h1>
+        <h1>Autor: <span th:text="${produto.autor}">Nome do Autor</span></h1>
+        <img th:src="${produto.imagem}" alt="Imagem">
+    </div>
+</body>
+</html>
