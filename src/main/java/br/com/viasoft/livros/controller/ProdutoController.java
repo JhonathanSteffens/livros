@@ -4,6 +4,7 @@ import br.com.viasoft.livros.dto.ProdutoFormularioDTO;
 import br.com.viasoft.livros.model.Produto;
 import br.com.viasoft.livros.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -40,7 +41,9 @@ public class ProdutoController {
     @GetMapping("/produto/edit/{id}")
     public String editaProduto(@PathVariable("id") Long id, ProdutoFormularioDTO produtoFormularioDTO, Model model){
         Produto p1 = produtoService.findById(id).orElse(null);
+        produtoFormularioDTO = new ProdutoFormularioDTO(p1);
         model.addAttribute("produto", p1);
+        model.addAttribute("dto", produtoFormularioDTO);
         return "etebilu";
     }
 
