@@ -16,21 +16,21 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .anyRequest().permitAll()
-                .and().csrf().ignoringAntMatchers("/h2-console/**")
-                .and().cors().disable();
-        http.headers().frameOptions().disable();
-
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http.authorizeRequests()
-//                .antMatchers("/h2-console/**").permitAll()
-//                .anyRequest().authenticated()
-//                .and().formLogin().loginPage("/login").permitAll()
+//                .anyRequest().permitAll()
 //                .and().csrf().ignoringAntMatchers("/h2-console/**")
 //                .and().cors().disable();
 //        http.headers().frameOptions().disable();
+
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/produto/delete/**").authenticated()
+                .anyRequest().permitAll()
+                .and().formLogin().loginPage("/login").permitAll()
+                .and().csrf().ignoringAntMatchers("/h2-console/**")
+                .and().cors().disable();
+        http.headers().frameOptions().disable();
     }
 
     @Bean

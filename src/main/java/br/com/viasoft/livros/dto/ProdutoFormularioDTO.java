@@ -20,6 +20,7 @@ public class ProdutoFormularioDTO {
 
    public Produto toProduto(){
        Produto produto = new Produto();
+       produto.setId(this.id);
        produto.setNome(this.nome);
        produto.setAutor(this.autor);
        produto.setImagem(this.imagem);

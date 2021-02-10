@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="conteudo" class="container">
-    <form th:object="${dto}" method="post" th:action="@{/produto/salvar}">
+    <form th:object="${dto}" method="post" th:action="@{'/produto/salvar/' + *{id}}">
         <div class="card mt-3">
             <div class="card-body">
                 <div class="form-group">
@@ -36,8 +36,7 @@
                 </div>
                 <button class="btn btn-primary mt-2" type="submit" >Salvar</button>
                 <a th:href="@{'/produto/' + *{id}}" class="btn btn-warning mt-2" type="button">Cancelar</a>
-                <a class="btn btn-danger mt-2" type="button">Deletar</a>
-                <a class="btn btn-light mt-2" type="reset">Limpar</a>
+                <a th:href="@{'/produto/delete/' + *{id}}" class="btn btn-danger mt-2" type="button">Deletar</a>
             </div>
         </div>
     </form>
