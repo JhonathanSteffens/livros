@@ -2,6 +2,7 @@ package framework;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +20,7 @@ public abstract class CrudServiceImpl<T, ID> implements CrudService<T, ID> {
     }
 
     @Override
+    @Transactional
     public T save(T t) {
         preSave(t);
         t = getRepository().save(t);

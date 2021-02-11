@@ -1,5 +1,6 @@
 package br.com.viasoft.livros.service.impl;
 
+import br.com.viasoft.livros.event.ClientePresave;
 import br.com.viasoft.livros.model.Cliente;
 import br.com.viasoft.livros.model.Produto;
 import br.com.viasoft.livros.repository.ClienteRepository;
@@ -7,6 +8,7 @@ import br.com.viasoft.livros.service.ClienteService;
 import framework.CrudService;
 import framework.CrudServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,9 @@ public class ClienteServiceImpl extends CrudServiceImpl<Cliente, Long> implement
 
     @Autowired
     ClienteRepository clienteRepository;
+
+    @Autowired
+    private ApplicationEventPublisher appPublisher;
 
 
     @Override
@@ -41,7 +46,8 @@ public class ClienteServiceImpl extends CrudServiceImpl<Cliente, Long> implement
 
     @Override
     public void preSave(Cliente cliente) {
-        System.out.println("Passei pelo pre save e o id era nulo");
+        appPublisher.publishEvent(new ClientePresave(this, cliente));
+
     }
 
     @Override
