@@ -72,11 +72,11 @@ public class ProdutoController {
     public String formProduto(@Valid ProdutoFormularioDTO produtoDTO, BindingResult result) {
 
         if (result.hasErrors()){
-            return "produto/formularioproduto";
+            return "redirect:/produto/";
         }
         Produto produto = produtoDTO.toProduto();
         produtoService.save(produto);
-        return "produto/formularioproduto";
+        return "redirect:/produto/" + produto.getId();
     }
 
     @PostMapping("/produto/salvar/{id}")

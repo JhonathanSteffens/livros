@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html th:replace="~{base :: base(~{::title}, ~{:: #conteudo})}" lang="pt-br">
 <head>
-    <title>Cliente</title>
+    <title>Início</title>
 </head>
 <body>
 <div class="container" id="conteudo">
     <div class="card">
-        <div class="card-body">
+        <div class="card-body" >
             <div th:each="cliente : ${lista}">
-                <h1 th:text="${cliente.nome}">Nome</h1>
-                <h2 th:text="${cliente.cpf}"></h2>
-                <h2 th:text="${cliente.email}"></h2>
-                <h2 th:text="${cliente.endereco}"></h2>
+                <h1 class="title">Nome: <a th:href="@{'/cliente/' + ${cliente.id}}" >
+                    <span th:text="${cliente.nome}">Nome: </span>
+                </a></h1>
+                <h2 class="title">CPF: <span th:text="${cliente.cpf}"> </span></h2>
+                <h2 class="title">E-mail: <span th:text="${cliente.email}"></span></h2>
+                <h2 class="title">Endereço: <span th:text="${cliente.endereco}"></span></h2>
+                <br>
+                <br>
             </div>
+            <a th:href="@{'/cliente/novo'}" class="btn btn-primary mt-2" type="button">Novo Cliente</a>
         </div>
     </div>
+
 </div>
 </body>
 </html>

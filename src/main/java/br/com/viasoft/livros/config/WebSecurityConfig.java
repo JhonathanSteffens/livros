@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/produto/delete/**").authenticated()
+                .antMatchers("/**/delete/**").authenticated()
                 .anyRequest().permitAll()
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().csrf().ignoringAntMatchers("/h2-console/**")

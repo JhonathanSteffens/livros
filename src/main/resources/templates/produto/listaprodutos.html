@@ -13,7 +13,11 @@
                         </a></h1>
                     <h2 th:text="${produto.autor}"></h2>
                     <img th:src="${produto.imagem}" alt="Imagem">
+                    <br>
+                    <br>
+                    <br>
                 </div>
+                <a th:href="@{'/produto/novo'}" class="btn btn-primary mt-2" type="button">Novo Produto</a>
             </div>
         </div>
 
